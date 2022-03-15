@@ -444,3 +444,9 @@ pipeline:
           type: String
           default: 44c9dcaa-dab2-4100-b2b5-75bdeb7aa497
           value: <+input>
+        - name: dbuser
+          type: String
+          value: <+secrets.getValue("dbuser")>
+        - name: dbpassword
+          type: String
+          value: <+secrets.getValue("dbpassword")>
