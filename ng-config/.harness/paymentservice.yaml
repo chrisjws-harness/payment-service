@@ -260,7 +260,7 @@ pipeline:
               type: Deployment
               spec:
                   serviceConfig:
-                      serviceRef: paymentservice
+                      serviceRef: paymentservicesrm
                       serviceDefinition:
                           type: Kubernetes
                           spec:
