@@ -328,6 +328,38 @@ pipeline:
                                                       count: 1
                                               skipDryRun: false
                                     - step:
+                                          type: Verify
+                                          name: Deployment Verification
+                                          identifier: verify_dev
+                                          spec:
+                                              type: Rolling
+                                              spec:
+                                                  sensitivity: MEDIUM
+                                                  duration: 5m
+                                                  deploymentTag: <+serviceConfig.artifacts.primary.tag>
+                                          timeout: 2h
+                                          failureStrategies:
+                                              - onFailure:
+                                                    errors:
+                                                        - Verification
+                                                    action:
+                                                        type: ManualIntervention
+                                                        spec:
+                                                            timeout: 2h
+                                                            onTimeout:
+                                                                action:
+                                                                    type: StageRollback
+                                              - onFailure:
+                                                    errors:
+                                                        - Unknown
+                                                    action:
+                                                        type: ManualIntervention
+                                                        spec:
+                                                            timeout: 2h
+                                                            onTimeout:
+                                                                action:
+                                                                    type: Ignore
+                                    - step:
                                           name: Canary Delete
                                           identifier: canaryDelete
                                           type: K8sCanaryDelete
