@@ -452,8 +452,9 @@ pipeline:
           value: <+secrets.getValue("dbpassword")>
         - name: isingress
           type: String
-          default: ""
+          default: "1"
           value: <+input>.allowedValues(1,0)
         - name: verify_fail
           type: String
+          default: "false"
           value: <+input>.allowedValues(true,false)
