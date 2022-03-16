@@ -166,7 +166,7 @@ pipeline:
                           spec:
                               variables: []
               when:
-                  pipelineStatus: Success
+                  pipelineStatus: Failure
         - stage:
               name: DeployDev
               identifier: DeployDev
