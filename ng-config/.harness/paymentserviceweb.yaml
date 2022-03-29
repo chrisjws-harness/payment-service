@@ -202,7 +202,6 @@ pipeline:
                               variables: []
               when:
                   pipelineStatus: Success
-
     variables:
         - name: mavenversion
           type: String
